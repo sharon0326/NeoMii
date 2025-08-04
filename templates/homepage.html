@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoMii - Turn Imagination into Reality</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --neon-cyan: #00ffff;
+            --neon-magenta: #ff00ff;
+            --neon-purple: #8b00ff;
+            --neon-green: #00ff41;
+            --neon-blue: #0080ff;
+            --cyber-dark: #0a0a0f;
+            --cyber-darker: #05050a;
+            --cyber-card: #1a1a2e;
+            --cyber-text: #e0e0e0;
+            --cyber-accent: #16213e;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--cyber-dark);
+            color: var(--cyber-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Grid Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+            z-index: -2;
+        }
+
+        /* Scanline Effect */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                transparent 98%,
+                rgba(0, 255, 255, 0.03) 100%
+            );
+            background-size: 100% 4px;
+            animation: scanlines 0.1s linear infinite;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        @keyframes scanlines {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 4px; }
+        }
+
+        /* Glitch Animation */
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+        }
+
+        /* Neon Glow */
+        .neon-glow {
+            text-shadow:
+                0 0 5px var(--neon-cyan),
+                0 0 10px var(--neon-cyan),
+                0 0 15px var(--neon-cyan),
+                0 0 20px var(--neon-cyan);
+        }
+
+        .neon-border {
+            border: 2px solid var(--neon-cyan);
+            box-shadow:
+                0 0 10px var(--neon-cyan),
+                inset 0 0 10px rgba(0, 255, 255, 0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--neon-cyan);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--neon-cyan);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: glitch 2s infinite;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .header-nav a {
+            color: var(--cyber-text);
+            text-decoration: none;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .header-nav a::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--neon-cyan);
+            transition: width 0.3s ease;
+        }
+
+        .header-nav a:hover {
+            color: var(--neon-cyan);
+            text-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        .header-nav a:hover::before {
+            width: 100%;
+            box-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        .header-spacer {
+            min-width: 200px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            padding-top: 80px;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--cyber-darker) 0%, var(--cyber-dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(0, 255, 255, 0.1) 0%, transparent 70%);
+            z-index: 1;
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-left {
+            padding: 40px 0;
+        }
+
+        .hero-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--neon-cyan);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: glitch 3s infinite;
+        }
+
+        .hero-description {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: var(--cyber-text);
+            line-height: 1.6;
+            text-shadow: 0 0 5px rgba(224, 224, 224, 0.5);
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 15px 40px;
+            background: transparent;
+            color: var(--neon-cyan);
+            text-decoration: none;
+            border: 2px solid var(--neon-cyan);
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .hero-cta:hover {
+            background: rgba(0, 255, 255, 0.1);
+            box-shadow:
+                0 0 20px var(--neon-cyan),
+                inset 0 0 20px rgba(0, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .hero-cta:hover::before {
+            left: 100%;
+        }
+
+        .hero-right {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .demo-card {
+            width: 100%;
+            max-width: 400px;
+            background: rgba(26, 26, 46, 0.8);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--neon-magenta);
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow:
+                0 0 30px rgba(255, 0, 255, 0.3),
+                inset 0 0 30px rgba(255, 0, 255, 0.1);
+        }
+
+        .demo-upload-area {
+            border: 3px dashed var(--neon-purple);
+            padding: 40px 20px;
+            background: rgba(16, 33, 62, 0.3);
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .demo-upload-area::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(139, 0, 255, 0.1) 50%, transparent 70%);
+        }
+
+        .demo-upload-area:hover {
+            border-color: var(--neon-cyan);
+            background: rgba(16, 33, 62, 0.5);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+
+        .demo-icon {
+            font-size: 3rem;
+            color: var(--neon-magenta);
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 10px var(--neon-magenta));
+        }
+
+        .demo-text {
+            color: var(--cyber-text);
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .demo-subtext {
+            color: var(--neon-green);
+            font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .demo-preview {
+            height: 200px;
+            background: rgba(5, 5, 10, 0.8);
+            border: 2px solid var(--cyber-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neon-green);
+            font-style: italic;
+            font-family: 'Rajdhani', sans-serif;
+            box-shadow: inset 0 0 20px rgba(0, 255, 65, 0.1);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--neon-cyan);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+            box-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        /* Combined About & Process Section */
+        .about-process {
+            background: var(--cyber-darker);
+        }
+
+        .about-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--cyber-text);
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 400;
+        }
+
+        .process-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .process-step {
+            background: rgba(26, 26, 46, 0.6);
+            backdrop-filter: blur(20px);
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid var(--neon-purple);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .process-step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(139, 0, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .process-step:hover {
+            border-color: var(--neon-cyan);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2);
+        }
+
+        .process-step:hover::before {
+            left: 100%;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--neon-magenta), var(--neon-purple));
+            color: var(--cyber-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            font-weight: 900;
+            border: 2px solid var(--neon-cyan);
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+        }
+
+        .process-step h3 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--neon-cyan);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .process-step p {
+            color: var(--cyber-text);
+            font-family: 'Inter', sans-serif;
+            margin-bottom: 20px;
+        }
+
+        .step-features {
+            list-style: none;
+            text-align: left;
+            font-size: 0.9rem;
+            color: var(--neon-green);
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 500;
+        }
+
+        .step-features li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .step-features li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--neon-cyan);
+        }
+
+        /* Demo Section */
+        .demo {
+            background: linear-gradient(135deg, var(--cyber-dark) 0%, var(--cyber-darker) 100%);
+            text-align: center;
+        }
+
+        .demo-placeholder {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 60px 40px;
+            background: rgba(26, 26, 46, 0.6);
+            backdrop-filter: blur(20px);
+            border: 2px dashed var(--neon-green);
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.2);
+        }
+
+        .upload-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-blue));
+            color: var(--cyber-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            border: 2px solid var(--neon-magenta);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+
+        /* Use Cases */
+        .use-cases {
+            background: var(--cyber-darker);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .gallery-item {
+            background: rgba(26, 26, 46, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--cyber-accent);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            border-color: var(--neon-cyan);
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        .gallery-placeholder {
+            height: 200px;
+            background: linear-gradient(135deg, var(--cyber-accent), rgba(139, 0, 255, 0.3));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neon-cyan);
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Gallery image styling */
+        .gallery-image {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.1);
+        }
+
+        /* Overlay for cyberpunk effect on images */
+        .gallery-image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(0, 255, 255, 0.1) 0%,
+                transparent 50%,
+                rgba(255, 0, 255, 0.1) 100%
+            );
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .gallery-item:hover .gallery-image-overlay {
+            opacity: 1;
+        }
+
+        /* Fallback styling when no image is provided */
+        .gallery-placeholder.no-image {
+            background: linear-gradient(135deg, var(--cyber-accent), rgba(139, 0, 255, 0.3));
+        }
+
+        .gallery-caption {
+            padding: 20px;
+            text-align: center;
+            color: var(--cyber-text);
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Team Section */
+        .team {
+            background: linear-gradient(135deg, var(--cyber-dark) 0%, var(--cyber-darker) 100%);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 60px;
+            margin-top: 50px;
+            justify-items: center;
+        }
+
+        .team-member {
+            background: rgba(26, 26, 46, 0.6);
+            backdrop-filter: blur(20px);
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid var(--neon-purple);
+            max-width: 400px;
+            width: 100%;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-member::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 0, 255, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .team-member:hover {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 15px 35px rgba(0, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .team-member:hover::before {
+            left: 100%;
+        }
+
+        .member-avatar {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, var(--cyber-accent), var(--neon-purple));
+            border: 3px solid var(--neon-cyan);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbitron', monospace;
+            font-size: 3rem;
+            color: var(--neon-cyan);
+            font-weight: 900;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Image styling for avatars */
+        .member-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        /* Fallback initials styling when no image */
+        .member-avatar.no-image {
+            background: linear-gradient(135deg, var(--cyber-accent), var(--neon-purple));
+        }
+
+        .member-name {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--neon-cyan);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .member-title {
+            color: var(--neon-magenta);
+            margin-bottom: 15px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            font-style: italic;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .member-description {
+            color: var(--cyber-text);
+            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Future Services */
+        .future-services {
+            background: var(--cyber-darker);
+            text-align: center;
+        }
+
+        .future-content {
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            color: var(--cyber-text);
+            line-height: 1.8;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 400;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--cyber-darker);
+            padding: 50px 0;
+            text-align: center;
+            border-top: 2px solid var(--neon-cyan);
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg,
+                transparent,
+                var(--neon-cyan),
+                var(--neon-magenta),
+                var(--neon-purple),
+                var(--neon-green),
+                transparent
+            );
+            animation: colorShift 3s ease-in-out infinite;
+        }
+
+        @keyframes colorShift {
+            0%, 100% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(180deg); }
+        }
+
+        .social-links {
+            margin-bottom: 30px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 20px;
+            color: var(--neon-cyan);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.2rem;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .social-links a::before {
+            content: '> ';
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-links a::after {
+            content: ' <';
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--neon-magenta);
+            text-shadow: 0 0 15px var(--neon-magenta);
+        }
+
+        .social-links a:hover::before,
+        .social-links a:hover::after {
+            opacity: 1;
+        }
+
+        .copyright {
+            color: var(--cyber-text);
+            margin-bottom: 15px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .disclaimer {
+            color: var(--neon-green);
+            font-style: italic;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        /* Navigation (for mobile) */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: 2px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 5px 10px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-toggle:hover {
+            background: rgba(0, 255, 255, 0.1);
+            box-shadow: 0 0 15px var(--neon-cyan);
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 80px 20px 20px;
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .mobile-nav a {
+            display: block;
+            color: var(--cyber-text);
+            text-decoration: none;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+            padding: 15px;
+            border: 1px solid var(--cyber-accent);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .mobile-nav a:hover {
+            background: rgba(0, 255, 255, 0.1);
+            color: var(--neon-cyan);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-nav {
+                display: none;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-description {
+                font-size: 1.1rem;
+            }
+
+            .demo-card {
+                max-width: 100%;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .process-container {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .about-intro,
+            .future-content {
+                font-size: 1.1rem;
+            }
+
+            .social-links a {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+            }
+
+            .hero-cta {
+                padding: 12px 25px;
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .process-step,
+            .team-member {
+                padding: 30px 20px;
+            }
+
+            .member-avatar {
+                width: 120px;
+                height: 120px;
+                font-size: 2.5rem;
+            }
+
+            .demo-card {
+                padding: 30px 20px;
+            }
+
+            .demo-upload-area {
+                padding: 30px 15px;
+            }
+        }
+
+        /* Fade-in Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Terminal cursor blink */
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .blink {
+            animation: blink 1s infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-logo">NeoMii</div>
+                <nav class="header-nav">
+                    <a href="#hero">Home</a>
+                    <a href="#about-process">About</a>
+                    <a href="#use-cases">Use Cases</a>
+                    <a href="#team">Team</a>
+                </nav>
+                <button class="nav-toggle" onclick="toggleNav()">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" id="mobileNav">
+        <a href="#hero" onclick="closeNav()">Home</a>
+        <a href="#about-process" onclick="closeNav()">About & Process</a>
+        <a href="#use-cases" onclick="closeNav()">Use Cases</a>
+        <a href="#team" onclick="closeNav()">Team</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-container">
+                <div class="hero-left">
+                    <h1 class="hero-title">NeoMii? NewMe!</h1>
+                    <p class="hero-description">NeoMii transforms your 2D images into customizable 3D models. The 3D printed model will be shipped to you in 10 days. Upload, customize, and bring your imagination to real life.</p>
+                    <a href="#about-process" class="hero-cta">Learn More</a>
+                </div>
+                <div class="hero-right">
+                    <div class="demo-card">
+                        <div class="demo-upload-area" onclick="handleDemoUpload()">
+                            <div class="demo-icon">📁</div>
+                            <div class="demo-text">Upload Your 2D Image</div>
+                            <div class="demo-subtext">Click to try the demo</div>
+                        </div>
+                        <div class="demo-preview">
+                            Your 3D model will appear here
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Use Cases -->
+    <section class="section use-cases" id="use-cases">
+        <div class="container">
+            <h2 class="section-title fade-in">Use Cases & Inspiration</h2>
+            <div class="gallery">
+                <div class="gallery-item fade-in">
+                    <div class="gallery-placeholder">
+                        <!-- Uncomment and add your image path below -->
+                        <img src="original_img.jpg" alt="2D to 3D Avatar transformation" class="gallery-image">
+                        <!-- <div class="gallery-image-overlay"></div> -->
+                        <!-- Fallback text (remove when image is added) -->
+
+                    </div>
+                    <div class="gallery-caption">Take a selfie of yourself</div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <div class="gallery-placeholder">
+                        <!-- Uncomment and add your image path below -->
+                        <img src="AI_img.jpg" alt="Custom figurine example" class="gallery-image">
+                        <!-- <div class="gallery-image-overlay"></div> -->
+                        <!-- Fallback text (remove when image is added) -->
+
+                    </div>
+                    <div class="gallery-caption">AI generated 2D avatar</div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <div class="gallery-placeholder">
+                        <!-- Uncomment and add your image path below -->
+                        <img src="model.png" alt="Different style variations" class="gallery-image">
+                        <!-- <div class="gallery-image-overlay"></div> -->
+                        <!-- Fallback text (remove when image is added) -->
+
+                    </div>
+                    <div class="gallery-caption">Transformed STL file that is ready for resin 3D</div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <div class="gallery-placeholder">
+                        <!-- Uncomment and add your image path below -->
+                        <img src="printing.jpg" alt="3D print ready model" class="gallery-image">
+                        <!-- <div class="gallery-image-overlay"></div> -->
+                        <!-- Fallback text (remove when image is added) -->
+
+                    </div>
+                    <div class="gallery-caption">Get your personalized avatar, yeah!!!</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Demo -->
+    <section class="section demo" id="demo">
+        <div class="container">
+            <h2 class="section-title fade-in">Interactive Demo</h2>
+            <div class="demo-placeholder fade-in">
+                <div class="upload-icon"> </div>
+                <h3 style="margin-bottom: 20px; color: var(--neon-cyan); font-size: 1.5rem; font-family: 'Rajdhani', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Demo Coming Soon</h3>
+                <p style="color: var(--cyber-text); font-family: 'Inter', sans-serif;">In the full version, this section will let you upload your image and receive a 3D model in real time, and customize the model.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Combined About & Process Section -->
+    <section class="section about-process" id="about-process">
+        <div class="container">
+            <h2 class="section-title fade-in">About NeoMii & How It Works</h2>
+            <div class="about-intro fade-in">
+                <p><strong>NeoMii</strong> is a creative-tech startup that transforms your 2D images into fully customizable 3D models using our AI-powered pipeline. No professional tools needed - just upload a selfie or drawing and customize your avatar with our intuitive editor. Want to make your cartoon self slimmer, stronger, taller, or even sci-fi-themed? You can. We also offer premium 3D printing services using advanced resin-based techniques for BJD-quality figurines delivered in just 10 days.</p>
+            </div>
+
+            <div class="process-container">
+                <div class="process-step fade-in">
+                    <div class="step-number">1</div>
+                    <h3>Upload & Transform</h3>
+                    <p>Upload any 2D image. Our AI, more specifically, rectified flow transformers, will creates a base 3D model.</p>
+                    <ul class="step-features">
+                        <li>Works with any image type</li>
+                        <li>AI-powered conversion</li>
+                        <li>Instant preview</li>
+                    </ul>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="step-number">2</div>
+                    <h3>Customize Your Model</h3>
+                    <p>Use our editor to adjust shapes, styles, and features. No 3D experience required. No CAD experiences needed!</p>
+                    <ul class="step-features">
+                        <li>Intuitive drag-and-drop</li>
+                        <li>Body shape adjustments</li>
+                        <li>Style themes available</li>
+                    </ul>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="step-number">3</div>
+                    <h3>Export or Print</h3>
+                    <p>Download STL file instantly or order a high-quality 3D print delivered to your door.</p>
+                    <ul class="step-features">
+                        <li>Instant STL download</li>
+                        <li>Premium resin printing</li>
+                        <li>10-day delivery</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet the Founders -->
+    <section class="section team" id="team">
+        <div class="container">
+            <h2 class="section-title fade-in">Meet the Founders</h2>
+            <div class="team-grid">
+                <div class="team-member fade-in">
+                    <div class="member-avatar">
+                        <!-- You can add an image here by uncommenting the line below and adding the image URL -->
+                        <img src="HS_ID.jpg" alt="Sharon Shen">
+                        <!-- If no image is provided, it will show initials -->
+
+                    </div>
+                    <h3 class="member-name">Sharon Shen</h3>
+                    <p class="member-title">Co-founder, Computer Vision</p>
+                    <p class="member-description">Graduated with Advanced Computer Science from University of Cambridge. SDE at Deloitte. Plan to work fulltime on NeoMii.</p>
+                </div>
+                <div class="team-member fade-in">
+                    <div class="member-avatar">
+                        <!-- You can add an image here by uncommenting the line below and adding the image URL -->
+                        <img src="DL_ID.jpg" alt="Dantong Liu">
+                        <!-- If no image is provided, it will show initials -->
+
+                    </div>
+                    <h3 class="member-name">Dantong Liu</h3>
+                    <p class="member-title">Co-founder, Product & Design</p>
+                    <p class="member-description">Graduated with Advanced Computer Science from University of Cambridge. ML chip designer at Arm Ltd with 10 years of experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="#">LinkedIn</a>
+                <a href="#">GitHub</a>
+                <a href="#">Instagram</a>
+                <a href="#">X</a>
+            </div>
+            <p class="copyright">&copy; 2025 NeoMii. All rights reserved.</p>
+            <p class="disclaimer">This website is for demonstration purposes only. Full functionality coming soon.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation
+        function toggleNav() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.toggle('active');
+        }
+
+        function closeNav() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.remove('active');
+        }
+
+        // Demo Upload Handler with Cyberpunk styling
+        function handleDemoUpload() {
+            const demoPreview = document.querySelector('.demo-preview');
+            const demoText = document.querySelector('.demo-text');
+            const demoSubtext = document.querySelector('.demo-subtext');
+
+            // Simulate upload process with cyberpunk styling
+            demoText.textContent = 'PROCESSING...';
+            demoText.style.color = 'var(--neon-magenta)';
+            demoSubtext.textContent = 'AI NEURAL NETWORK ACTIVE';
+            demoSubtext.style.color = 'var(--neon-green)';
+            demoPreview.innerHTML = '<div style="color: var(--neon-cyan); font-family: \'Rajdhani\', sans-serif; font-weight: 600;">ANALYZING DATA STREAM...</div>';
+
+            setTimeout(() => {
+                demoPreview.innerHTML = '<div style="font-size: 3rem; color: var(--neon-cyan); filter: drop-shadow(0 0 15px var(--neon-cyan));">🎭</div><div style="margin-top: 10px; color: var(--neon-green); font-family: \'Rajdhani\', sans-serif; font-weight: 600; text-transform: uppercase;">3D MODEL GENERATED</div><div style="font-size: 0.9rem; color: var(--cyber-text); margin-top: 5px; font-family: \'Inter\', sans-serif;">FULL SYSTEM ONLINE SOON</div>';
+                demoText.textContent = 'UPLOAD COMPLETE!';
+                demoText.style.color = 'var(--neon-green)';
+                demoSubtext.textContent = 'CLICK TO INITIALIZE AGAIN';
+                demoSubtext.style.color = 'var(--neon-cyan)';
+            }, 2000);
+
+            setTimeout(() => {
+                demoText.textContent = 'Upload Your 2D Image';
+                demoText.style.color = 'var(--cyber-text)';
+                demoSubtext.textContent = 'Click to try the demo';
+                demoSubtext.style.color = 'var(--neon-green)';
+                demoPreview.textContent = 'Your 3D model will appear here';
+                demoPreview.style.color = 'var(--neon-green)';
+            }, 5000);
+        }
+
+        // Function to update founder images
+        function updateFounderImage(memberIndex, imageUrl) {
+            const members = document.querySelectorAll('.team-member');
+            if (members[memberIndex]) {
+                const avatar = members[memberIndex].querySelector('.member-avatar');
+
+                // Check if image already exists, if so remove it
+                const existingImg = avatar.querySelector('img');
+                if (existingImg) {
+                    existingImg.remove();
+                }
+
+                // Hide initials
+                const initials = avatar.querySelector('.initials');
+                if (initials) {
+                    initials.style.display = 'none';
+                }
+
+                // Create and add new image
+                const img = document.createElement('img');
+                img.src = imageUrl;
+                img.alt = members[memberIndex].querySelector('.member-name').textContent;
+                img.onerror = function() {
+                    // If image fails to load, show initials again
+                    this.remove();
+                    if (initials) {
+                        initials.style.display = 'flex';
+                    }
+                };
+
+                avatar.appendChild(img);
+            }
+        }
+
+        // Function to update gallery images
+        function updateGalleryImage(itemIndex, imageUrl, altText) {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            if (galleryItems[itemIndex]) {
+                const placeholder = galleryItems[itemIndex].querySelector('.gallery-placeholder');
+
+                // Check if image already exists, if so remove it
+                const existingImg = placeholder.querySelector('.gallery-image');
+                if (existingImg) {
+                    existingImg.remove();
+                }
+
+                // Check if overlay already exists, if so remove it
+                const existingOverlay = placeholder.querySelector('.gallery-image-overlay');
+                if (existingOverlay) {
+                    existingOverlay.remove();
+                }
+
+                // Hide fallback text
+                const fallbackText = placeholder.querySelector('.fallback-text');
+                if (fallbackText) {
+                    fallbackText.style.display = 'none';
+                }
+
+                // Create and add new image
+                const img = document.createElement('img');
+                img.src = imageUrl;
+                img.alt = altText;
+                img.className = 'gallery-image';
+                img.onerror = function() {
+                    // If image fails to load, show fallback text again
+                    this.remove();
+                    if (existingOverlay && existingOverlay.parentNode) {
+                        existingOverlay.remove();
+                    }
+                    if (fallbackText) {
+                        fallbackText.style.display = 'block';
+                    }
+                };
+
+                // Create overlay for cyberpunk effect
+                const overlay = document.createElement('div');
+                overlay.className = 'gallery-image-overlay';
+
+                // Add image and overlay to placeholder
+                placeholder.appendChild(img);
+                placeholder.appendChild(overlay);
+
+                // Remove flex centering when image is added
+                placeholder.style.display = 'block';
+                placeholder.style.position = 'relative';
+                placeholder.style.overflow = 'hidden';
+            }
+        }
+
+        // Example usage for adding gallery images (uncomment and modify these lines):
+        // updateGalleryImage(0, 'path/to/2d-to-3d-avatar.jpg', '2D to 3D Avatar transformation');
+        // updateGalleryImage(1, 'path/to/custom-figurine.jpg', 'Custom figurine example');
+        // updateGalleryImage(2, 'path/to/style-variants.jpg', 'Different style variations');
+        // updateGalleryImage(3, 'path/to/print-ready.jpg', '3D print ready model');
+
+        // Smooth scrolling for all navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Enhanced scroll animations with cyberpunk effects
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+
+                    // Add special effects for section titles
+                    if (entry.target.classList.contains('section-title')) {
+                        setTimeout(() => {
+                            entry.target.style.textShadow = `
+                                0 0 5px var(--neon-cyan),
+                                0 0 10px var(--neon-cyan),
+                                0 0 15px var(--neon-cyan),
+                                0 0 20px var(--neon-cyan)
+                            `;
+                        }, 300);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Close mobile nav when clicking outside
+        document.addEventListener('click', function(e) {
+            const mobileNav = document.getElementById('mobileNav');
+            const navToggle = document.querySelector('.nav-toggle');
+
+            if (!mobileNav.contains(e.target) && !navToggle.contains(e.target)) {
+                mobileNav.classList.remove('active');
+            }
+        });
+
+        // Add random glitch effect to logo
+        function addGlitchEffect() {
+            const logo = document.querySelector('.header-logo');
+            const originalText = logo.textContent;
+            const glitchChars = '!@#$%^&*()_+-=[]{}|;:,.<>?';
+
+            let glitched = '';
+            for (let i = 0; i < originalText.length; i++) {
+                if (Math.random() < 0.1) {
+                    glitched += glitchChars[Math.floor(Math.random() * glitchChars.length)];
+                } else {
+                    glitched += originalText[i];
+                }
+            }
+
+            logo.textContent = glitched;
+            setTimeout(() => {
+                logo.textContent = originalText;
+            }, 100);
+        }
+
+        // Random glitch effect every 5-10 seconds
+        setInterval(() => {
+            if (Math.random() < 0.3) {
+                addGlitchEffect();
+            }
+        }, Math.random() * 5000 + 5000);
+
+        // Add typing effect to hero title on load
+        window.addEventListener('load', function() {
+            const heroTitle = document.querySelector('.hero-title');
+            const originalText = heroTitle.textContent;
+            heroTitle.textContent = '';
+
+            let i = 0;
+            const typeWriter = () => {
+                if (i < originalText.length) {
+                    heroTitle.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 50);
+                } else {
+                    // Add blinking cursor
+                    const cursor = document.createElement('span');
+                    cursor.textContent = '_';
+                    cursor.className = 'blink';
+                    cursor.style.color = 'var(--neon-cyan)';
+                    heroTitle.appendChild(cursor);
+
+                    // Remove cursor after 3 seconds
+                    setTimeout(() => {
+                        if (cursor.parentNode) {
+                            cursor.parentNode.removeChild(cursor);
+                        }
+                    }, 3000);
+                }
+            };
+
+            setTimeout(typeWriter, 1000);
+        });
+
+        // Add particle effect on hover for CTA button
+        document.querySelector('.hero-cta').addEventListener('mouseenter', function(e) {
+            const button = e.target;
+            const rect = button.getBoundingClientRect();
+
+            for (let i = 0; i < 10; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'absolute';
+                particle.style.width = '2px';
+                particle.style.height = '2px';
+                particle.style.background = 'var(--neon-cyan)';
+                particle.style.borderRadius = '50%';
+                particle.style.pointerEvents = 'none';
+                particle.style.left = rect.left + Math.random() * rect.width + 'px';
+                particle.style.top = rect.top + Math.random() * rect.height + 'px';
+                particle.style.zIndex = '1001';
+                particle.style.boxShadow = '0 0 6px var(--neon-cyan)';
+
+                document.body.appendChild(particle);
+
+                const animation = particle.animate([
+                    { transform: 'translate(0, 0) scale(1)', opacity: 1 },
+                    { transform: `translate(${(Math.random() - 0.5) * 100}px, ${(Math.random() - 0.5) * 100}px) scale(0)`, opacity: 0 }
+                ], {
+                    duration: 1000,
+                    easing: 'ease-out'
+                });
+
+                animation.onfinish = () => {
+                    if (particle.parentNode) {
+                        particle.parentNode.removeChild(particle);
+                    }
+                };
+            }
+        });
+    </script>
+</body>
+</html>
