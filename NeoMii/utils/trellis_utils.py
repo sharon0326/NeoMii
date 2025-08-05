@@ -1,5 +1,4 @@
 import replicate
-REPLICATE_API_TOKEN = "r8_WKI9EYUHfCgkmEBIaCKGpBbzRsk6llz2ALRTk"
 
 input = {
     "images": ["https://replicate.delivery/pbxt/MJaYRxQMgIzPsALScNadsZFCXR2h1n97xBzhRinmUQw9aw25/ephemeros_a_dune_sandworm_with_black_background_de398ce7-2276-4634-8f1d-c4ed2423cda4.png"],
