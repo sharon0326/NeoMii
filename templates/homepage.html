@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,7 +54,7 @@
             z-index: -2;
         }
 
-        /* Scanline Effect */
+        /* Scanlines Effect */
         body::after {
             content: '';
             position: fixed;
@@ -180,10 +181,6 @@
             box-shadow: 0 0 10px var(--neon-cyan);
         }
 
-        .header-spacer {
-            min-width: 200px;
-        }
-
         /* Hero Section */
         .hero {
             min-height: 100vh;
@@ -298,6 +295,7 @@
             box-shadow:
                 0 0 30px rgba(255, 0, 255, 0.3),
                 inset 0 0 30px rgba(255, 0, 255, 0.1);
+            border-radius: 15px;
         }
 
         .demo-upload-area {
@@ -313,6 +311,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            border-radius: 10px;
         }
 
         .demo-upload-area::before {
@@ -323,6 +322,7 @@
             right: 0;
             bottom: 0;
             background: linear-gradient(45deg, transparent 30%, rgba(139, 0, 255, 0.1) 50%, transparent 70%);
+            border-radius: 10px;
         }
 
         .demo-upload-area:hover {
@@ -348,6 +348,7 @@
             object-fit: cover;
             min-height: 180px;
             filter: brightness(0.9) contrast(1.1);
+            border-radius: 10px;
         }
 
         .demo-icon {
@@ -376,7 +377,7 @@
             z-index: 1;
         }
 
-        /* FIXED STL VIEWER SECTION - Main fixes here */
+        /* STL Viewer Section */
         .demo-preview {
             height: 300px;
             background: rgba(5, 5, 10, 0.8);
@@ -390,6 +391,7 @@
             box-shadow: inset 0 0 20px rgba(0, 255, 65, 0.1);
             position: relative;
             overflow: hidden;
+            border-radius: 10px;
         }
 
         #stl-viewer {
@@ -400,9 +402,9 @@
             position: absolute;
             top: 0;
             left: 0;
+            border-radius: 10px;
         }
 
-        /* FIXED: Properly centered default message */
         #defaultMessage {
             position: absolute;
             top: 50%;
@@ -432,6 +434,7 @@
             font-size: 0.8rem;
             color: var(--neon-cyan);
             backdrop-filter: blur(10px);
+            border-radius: 5px;
         }
 
         .viewer-loading {
@@ -523,6 +526,7 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            border-radius: 15px;
         }
 
         .process-step::before {
@@ -560,6 +564,7 @@
             font-weight: 900;
             border: 2px solid var(--neon-cyan);
             box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+            border-radius: 50%;
         }
 
         .process-step h3 {
@@ -600,36 +605,6 @@
             color: var(--neon-cyan);
         }
 
-        /* Demo Section */
-        .demo {
-            background: linear-gradient(135deg, var(--cyber-dark) 0%, var(--cyber-darker) 100%);
-            text-align: center;
-        }
-
-        .demo-placeholder {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 60px 40px;
-            background: rgba(26, 26, 46, 0.6);
-            backdrop-filter: blur(20px);
-            border: 2px dashed var(--neon-green);
-            box-shadow: 0 0 30px rgba(0, 255, 65, 0.2);
-        }
-
-        .upload-icon {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 20px;
-            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-blue));
-            color: var(--cyber-dark);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            border: 2px solid var(--neon-magenta);
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
-        }
-
         /* Use Cases */
         .use-cases {
             background: var(--cyber-darker);
@@ -649,6 +624,7 @@
             overflow: hidden;
             transition: all 0.3s ease;
             position: relative;
+            border-radius: 15px;
         }
 
         .gallery-item::before {
@@ -691,38 +667,13 @@
         .gallery-image {
             width: 100%;
             height: 200px;
-            object-fit: contain;
+            object-fit: cover;
             transition: transform 0.3s ease;
             position: relative;
         }
 
         .gallery-item:hover .gallery-image {
             transform: scale(1.1);
-        }
-
-        .gallery-image-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(
-                135deg,
-                rgba(0, 255, 255, 0.1) 0%,
-                transparent 50%,
-                rgba(255, 0, 255, 0.1) 100%
-            );
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-        }
-
-        .gallery-item:hover .gallery-image-overlay {
-            opacity: 1;
-        }
-
-        .gallery-placeholder.no-image {
-            background: linear-gradient(135deg, var(--cyber-accent), rgba(139, 0, 255, 0.3));
         }
 
         .gallery-caption {
@@ -756,6 +707,7 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            border-radius: 15px;
         }
 
         .team-member::before {
@@ -805,10 +757,6 @@
             border-radius: 50%;
         }
 
-        .member-avatar.no-image {
-            background: linear-gradient(135deg, var(--cyber-accent), var(--neon-purple));
-        }
-
         .member-name {
             font-family: 'Rajdhani', sans-serif;
             font-size: 1.8rem;
@@ -833,6 +781,38 @@
             color: var(--cyber-text);
             line-height: 1.6;
             font-family: 'Inter', sans-serif;
+        }
+
+        /* Demo Section */
+        .demo {
+            background: linear-gradient(135deg, var(--cyber-dark) 0%, var(--cyber-darker) 100%);
+            text-align: center;
+        }
+
+        .demo-placeholder {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 60px 40px;
+            background: rgba(26, 26, 46, 0.6);
+            backdrop-filter: blur(20px);
+            border: 2px dashed var(--neon-green);
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.2);
+            border-radius: 15px;
+        }
+
+        .upload-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-blue));
+            color: var(--cyber-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            border: 2px solid var(--neon-magenta);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            border-radius: 50%;
         }
 
         /* Footer */
@@ -923,7 +903,7 @@
             font-size: 0.9rem;
         }
 
-        /* Navigation (for mobile) */
+        /* Mobile Navigation */
         .nav-toggle {
             display: none;
             background: none;
@@ -934,6 +914,7 @@
             z-index: 1001;
             padding: 5px 10px;
             transition: all 0.3s ease;
+            border-radius: 5px;
         }
 
         .nav-toggle:hover {
@@ -972,6 +953,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: 600;
+            border-radius: 10px;
         }
 
         .mobile-nav a:hover {
@@ -1103,6 +1085,18 @@
         .blink {
             animation: blink 1s infinite;
         }
+
+        /* Error message styling */
+        .error-message {
+            color: var(--neon-magenta);
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 10px;
+            background: rgba(255, 0, 255, 0.1);
+            border: 1px solid var(--neon-magenta);
+            border-radius: 5px;
+            margin: 10px 0;
+        }
     </style>
 </head>
 <body>
@@ -1173,25 +1167,25 @@
             <div class="gallery">
                 <div class="gallery-item fade-in">
                     <div class="gallery-placeholder">
-                        <img src="original_img.jpg" alt="2D to 3D Avatar transformation" class="gallery-image">
+                        <img src="{% static 'original_img.jpg' %}" alt="2D to 3D Avatar transformation" class="gallery-image" onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=\'color: var(--neon-cyan); font-size: 0.9rem;\'>Image: original_img.jpg<br><small>Place in static/ folder</small></div>';">
                     </div>
                     <div class="gallery-caption">Take a selfie of yourself</div>
                 </div>
                 <div class="gallery-item fade-in">
                     <div class="gallery-placeholder">
-                        <img src="AI_img.jpg" alt="Custom figurine example" class="gallery-image">
+                        <img src="{% static 'AI_img.jpg' %}" alt="Custom figurine example" class="gallery-image" onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=\'color: var(--neon-cyan); font-size: 0.9rem;\'>Image: AI_img.jpg<br><small>Place in static/ folder</small></div>';">
                     </div>
                     <div class="gallery-caption">AI generated 2D avatar</div>
                 </div>
                 <div class="gallery-item fade-in">
                     <div class="gallery-placeholder">
-                        <img src="model.png" alt="Different style variations" class="gallery-image">
+                        <img src="{% static 'model.png' %}" alt="Different style variations" class="gallery-image" onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=\'color: var(--neon-cyan); font-size: 0.9rem;\'>Image: model.png<br><small>Place in static/ folder</small></div>';">
                     </div>
-                    <div class="gallery-caption">Transformed STL file that is ready for resin 3D</div>
+                    <div class="gallery-caption">Transformed STL file that is ready for resin 3D printing</div>
                 </div>
                 <div class="gallery-item fade-in">
                     <div class="gallery-placeholder">
-                        <img src="printing.jpg" alt="3D print ready model" class="gallery-image">
+                        <img src="{% static 'printing.jpg' %}" alt="3D print ready model" class="gallery-image" onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=\'color: var(--neon-cyan); font-size: 0.9rem;\'>Image: printing.jpg<br><small>Place in static/ folder</small></div>';">
                     </div>
                     <div class="gallery-caption">Get your personalized avatar, yeah!!!</div>
                 </div>
@@ -1223,7 +1217,7 @@
                 <div class="process-step fade-in">
                     <div class="step-number">1</div>
                     <h3>Upload & Transform</h3>
-                    <p>Upload any 2D image. Our AI, more specifically, rectified flow transformers, will creates a base 3D model.</p>
+                    <p>Upload any 2D image. Our AI, more specifically, rectified flow transformers, creates a base 3D model.</p>
                     <ul class="step-features">
                         <li>Works with any image type</li>
                         <li>AI-powered conversion</li>
@@ -1233,7 +1227,7 @@
                 <div class="process-step fade-in">
                     <div class="step-number">2</div>
                     <h3>Customize Your Model</h3>
-                    <p>Use our editor to adjust shapes, styles, and features. No 3D experience required. No CAD experiences needed!</p>
+                    <p>Use our editor to adjust shapes, styles, and features. No 3D experience required. No CAD experience needed!</p>
                     <ul class="step-features">
                         <li>Intuitive drag-and-drop</li>
                         <li>Body shape adjustments</li>
@@ -1261,7 +1255,7 @@
             <div class="team-grid">
                 <div class="team-member fade-in">
                     <div class="member-avatar">
-                        <img src="HS_ID.jpg" alt="Sharon Shen">
+                        <img src="{% static 'HS_ID.jpg' %}" alt="Sharon Shen" onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=\'color: var(--neon-cyan); font-size: 1.5rem;\'>SS</div>';">
                     </div>
                     <h3 class="member-name">Sharon Shen</h3>
                     <p class="member-title">Co-founder, Computer Vision</p>
@@ -1269,7 +1263,7 @@
                 </div>
                 <div class="team-member fade-in">
                     <div class="member-avatar">
-                        <img src="DL_ID.jpg" alt="Dantong Liu">
+                        <img src="{% static 'DL_ID.jpg' %}" alt="Dantong Liu" onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=\'color: var(--neon-cyan); font-size: 1.5rem;\'>DL</div>';">
                     </div>
                     <h3 class="member-name">Dantong Liu</h3>
                     <p class="member-title">Co-founder, Product & Design</p>
@@ -1303,7 +1297,7 @@
             mobileNav.classList.remove('active');
         }
 
-        // FIXED STL VIEWER - Demo Upload Handler with proper 3D STL Viewer
+        // STL Viewer - Demo Upload Handler with proper 3D STL Viewer
         let scene, camera, renderer, controls, currentModel;
         let viewerInitialized = false;
         let isMouseOver = false;
@@ -1400,7 +1394,7 @@
             });
         }
 
-        // FIXED STL LOADER - This function now properly loads STL files
+        // STL LOADER - This function loads STL files
         function loadSTLModel(url) {
             // Wait for STLLoader to be available
             if (typeof THREE.STLLoader === 'undefined') {
@@ -1461,24 +1455,14 @@
                 },
                 function (error) {
                     console.error('Error loading STL file:', error);
-                    console.log('Make sure your STL file "Tripo_Model.stl" exists in the same directory as this HTML file');
+                    console.log('Make sure your STL file "Tripo_Model.stl" exists in the static directory');
 
-                    // Show error message instead of fallback
+                    // Show error message
                     document.getElementById('defaultMessage').innerHTML =
-                        'STL file not found<br><small style="font-size: 0.8em;">Place "Tripo_Model.stl" in the same directory</small>';
+                        'STL file not found<br><small style="font-size: 0.8em;">Place "Tripo_Model.stl" in the static/ directory</small>';
                     document.getElementById('defaultMessage').style.display = 'block';
                 }
             );
-        }
-
-        function showFallbackModel() {
-            // Removed fallback cube - we don't want to show it
-            console.log('Fallback model disabled - STL loading only');
-
-            // Just show a message that STL is required
-            document.getElementById('defaultMessage').innerHTML =
-                'Waiting for STL model...<br><small style="font-size: 0.8em;">Place "Tripo_Model.stl" in the same directory</small>';
-            document.getElementById('defaultMessage').style.display = 'block';
         }
 
         function animate() {
@@ -1520,9 +1504,20 @@
             // Load image into upload area
             setTimeout(() => {
                 const img = document.createElement('img');
-                img.src = 'myself.jpg';
+                img.src = "{% static 'myself.jpg' %}";
                 img.alt = 'Demo Avatar';
                 img.className = 'uploaded-image';
+
+                // Handle image load error
+                img.onerror = function() {
+                    this.style.display = 'none';
+                    uploadArea.innerHTML = `
+                        <div class="error-message">
+                            Demo image "myself.jpg" not found<br>
+                            <small>Place the image in your static/ directory</small>
+                        </div>
+                    `;
+                };
 
                 uploadArea.innerHTML = '';
                 uploadArea.appendChild(img);
@@ -1537,9 +1532,8 @@
             setTimeout(() => {
                 viewerLoading.style.display = 'none';
 
-                // Try to load your STL file - replace 'Tripo_Model.stl' with your actual file path
-                // If the file doesn't exist, it will show the fallback cube
-                loadSTLModel('Tripo_Model.stl');
+                // Try to load your STL file
+                loadSTLModel("{% static 'Tripo_Model.stl' %}");
 
             }, 2500);
 
@@ -1560,6 +1554,7 @@
 
                 document.getElementById('viewerControls').style.display = 'none';
                 document.getElementById('defaultMessage').style.display = 'block';
+                document.getElementById('defaultMessage').innerHTML = 'Your 3D model will appear here';
 
                 if (renderer) {
                     renderer.clear();
